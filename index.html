@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анвар Латыпов — Резюме</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --card-border: #1f293d;
+            --card-hover-border: #3b82f6;
+            --accent-color: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.25);
+            --accent-purple: #8b5cf6;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --level-active: #3b82f6;
+            --level-inactive: #1e293b;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .profile-title-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            display: inline-block;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 4px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .about-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px 30px;
+            margin-top: 10px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-purple));
+        }
+
+        .about-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-card p {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Navigation Tabs */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+        }
+
+        .tab-btn {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-btn i {
+            font-size: 1rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(31, 41, 55, 0.8);
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* Tab Content Panels */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 1. Python Skills Tab */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .skill-level-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .level-bars {
+            display: flex;
+            gap: 5px;
+        }
+
+        .bar-segment {
+            width: 22px;
+            height: 8px;
+            background-color: var(--level-inactive);
+            border-radius: 3px;
+            transition: background-color 0.4s ease;
+        }
+
+        .bar-segment.active {
+            background-color: var(--level-active);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .level-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* 2. Education Tab */
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .edu-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .edu-info h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .edu-info .faculty {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .edu-info .specialty {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .edu-year {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        /* 3. Experience Tab Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: var(--card-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -30px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .timeline-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .company-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .job-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .job-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* 4. Projects Tab */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all var(--transition-speed);
+        }
+
+        .project-card:hover {
+            border-color: var(--card-hover-border);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.5);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+        }
+
+        .project-btn:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        /* 5. Other Skills Tab */
+        .other-skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .other-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .other-card h4 {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+
+        .other-card h4 i {
+            color: var(--accent-color);
+        }
+
+        .tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .tag.accent {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+            color: #c4b5fd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 60px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 0.95rem;
+            }
+            .tabs-nav {
+                flex-direction: column;
+            }
+            .tab-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .edu-card {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .edu-year {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Анвар Латыпов</h1>
+            <div class="subtitle">Резюме • Python-разработчик / ML-инженер</div>
+            
+            <div class="about-card">
+                <h3><i class="fa-solid fa-user"></i> О себе</h3>
+                <p>Разрабатываю на Python с 2-летним стажем. Специализируюсь на написании моделей машинного обучения и нейронных сетей, а также создании Telegram-ботов, десктопных приложений и многого другого.</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab(event, 'skills')">
+                <i class="fa-brands fa-python"></i> Навыки Python
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'education')">
+                <i class="fa-solid fa-graduation-cap"></i> Образование
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'experience')">
+                <i class="fa-solid fa-briefcase"></i> Опыт работы
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'projects')">
+                <i class="fa-solid fa-code-branch"></i> Мои проекты
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'other-skills')">
+                <i class="fa-solid fa-sliders"></i> Другие навыки
+            </button>
+        </nav>
+
+        <!-- TAB 1: Python Skills -->
+        <div id="skills" class="tab-content active">
+            <div class="skills-grid">
+                <!-- Skill items generated dynamically via JS or rendered statically -->
+                <div class="skill-item">
+                    <span class="skill-name">OpenCV</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                        </div>
+                        <span class="level-label">Продвинутый</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Numpy</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                        </div>
+                        <span class="level-label">Продвинутый</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Requests</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                        </div>
+                        <span class="level-label">Продвинутый</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Matplotlib</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                        </div>
+                        <span class="level-label">Продвинутый</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">JSON / OS</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                        </div>
+                        <span class="level-label">Продвинутый</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Tensorflow</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Pandas</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Scikit-learn</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">FastAPI</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Tkinter</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Pygame</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Regex</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Средний</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Asyncio</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Базовый</span>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-name">Django</span>
+                    <div class="skill-level-container">
+                        <div class="level-bars">
+                            <span class="bar-segment active"></span>
+                            <span class="bar-segment"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="level-label">Базовый</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: Education -->
+        <div id="education" class="tab-content">
+            <div class="education-list">
+                <div class="edu-card">
+                    <div class="edu-info">
+                        <h4>Московский политехнический университет</h4>
+                        <div class="faculty">Факультет информационных технологий</div>
+                        <div class="specialty">Прикладная математика и информатика (Интеллектуальные системы управления транспортом)</div>
+                    </div>
+                    <div class="edu-year">2022 – 2026</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-info">
+                        <h4>Разработчик 1С</h4>
+                        <div class="faculty">Курс ДПО</div>
+                        <div class="specialty">Дополнительное профессиональное образование</div>
+                    </div>
+                    <div class="edu-year">2023 – 2024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: Experience Timeline -->
+        <div id="experience" class="tab-content">
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="company-name">Проект по разработке системы безопасности беспилотных автомобилей</span>
+                            <span class="timeline-date">01.2025 – 06.2025</span>
+                        </div>
+                        <div class="job-title">ML-инженер</div>
+                        <div class="job-desc">Создание системы для сбора и анализа данных в реальном времени с телеметрических датчиков, разработка модели для предсказывания неисправности различных систем автомобиля.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="company-name">Проект по оптимизации дорожного трафика</span>
+                            <span class="timeline-date">09.2023 – 06.2024</span>
+                        </div>
+                        <div class="job-title">Специалист по Computer Vision</div>
+                        <div class="job-desc">Разработка модели компьютерного зрения для распознавания объектов с дорожных камер для подсчета автомобилей и анализа плотности трафика.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="company-name">ООО "Фирма БАС"</span>
+                            <span class="timeline-date">06.2023 – 09.2023</span>
+                        </div>
+                        <div class="job-title">Специалист по автоматизации</div>
+                        <div class="job-desc">Автоматизация рабочего процесса компании путем внедрения ИИ технологий и настройки работы ИИ-агентов.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="company-name">Yandex</span>
+                            <span class="timeline-date">10.2022 – 12.2022</span>
+                        </div>
+                        <div class="job-title">Стажер</div>
+                        <div class="job-desc">Обучение небольшой нейронной сети на наборе данных, сортировка датасета (проектная работа).</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 4: Projects -->
+        <div id="projects" class="tab-content">
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div>
+                        <div class="project-title"><i class="fa-solid fa-eye" style="color: var(--accent-color);"></i> Fiber cliff</div>
+                        <div class="project-desc">Модель нейронной сети для детекции разрывов в оптоволоконных кабелях. Обучена на среднем датасете из изображений высокого качества.</div>
+                    </div>
+                    <a href="https://colab.research.google.com/drive/1Yf5vAgtfO_L-MYWUDjCrlDERgULtXQvX?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <span>Открыть в Colab</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title"><i class="fa-solid fa-robot" style="color: var(--accent-color);"></i> Remindee Task Bot</div>
+                        <div class="project-desc">Telegram-бот для удобного создания задач и автоматической отправки напоминаний по созданным задачам.</div>
+                    </div>
+                    <a href="https://github.com/anvar145/remindee-task-bot" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <span>Репозиторий GitHub</span> <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title"><i class="fa-solid fa-gamepad" style="color: var(--accent-color);"></i> Game Assistant</div>
+                        <div class="project-desc">Голосовой ИИ-ассистент на базе GPT-4.1 для помощи в видеоиграх с возможностью анализа экрана пользователя в реальном времени.</div>
+                    </div>
+                    <a href="https://github.com/anvar145/assistant" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <span>Репозиторий GitHub</span> <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title"><i class="fa-solid fa-download" style="color: var(--accent-color);"></i> YT/TT Bot</div>
+                        <div class="project-desc">Telegram-бот для скачивания видеоматериалов из популярный социальных сетей (YouTube, TikTok, Instagram).</div>
+                    </div>
+                    <a href="https://github.com/anvar145/yt_tt_bot" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <span>Репозиторий GitHub</span> <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title"><i class="fa-solid fa-dice-d20" style="color: var(--accent-color);"></i> AI RPG</div>
+                        <div class="project-desc">Текстовая игра в жанре RPG, полностью управляемая языковыми моделями: от генерации мира и сюжета до инвентаря и уникальных сценариев.</div>
+                    </div>
+                    <span class="project-btn" style="opacity: 0.6; cursor: default;">
+                        <span>Проект в разработке</span>
+                    </span>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <div class="project-title"><i class="fa-solid fa-brain" style="color: var(--accent-color);"></i> Модель для абитуриентов</div>
+                        <div class="project-desc">Предиктивная модель для определения перспективного направления в ВУЗе на основе личностных характеристик. Написано без сторонних библиотек.</div>
+                    </div>
+                    <a href="https://colab.research.google.com/drive/1W1rBCg1O7VoBW8qJSngfscS2-aJtmtHx?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <span>Открыть в Colab</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 5: Other Skills -->
+        <div id="other-skills" class="tab-content">
+            <div class="other-skills-container">
+                
+                <div class="other-card">
+                    <h4><i class="fa-solid fa-code"></i> Языки и Инструменты</h4>
+                    <div class="tags-wrapper">
+                        <span class="tag accent">C++</span>
+                        <span class="tag accent">JavaScript</span>
+                        <span class="tag accent">SQL</span>
+                        <span class="tag accent">Git</span>
+                        <span class="tag accent">Docker</span>
+                    </div>
+                </div>
+
+                <div class="other-card">
+                    <h4><i class="fa-solid fa-language"></i> Знание языков</h4>
+                    <div class="tags-wrapper">
+                        <span class="tag">Русский — Родной</span>
+                        <span class="tag">Таджикский — Родной</span>
+                        <span class="tag">Английский — B2</span>
+                        <span class="tag">Немецкий — A2</span>
+                    </div>
+                </div>
+
+                <div class="other-card" style="grid-column: 1 / -1;">
+                    <h4><i class="fa-solid fa-user-check"></i> Гибкие навыки (Soft Skills)</h4>
+                    <div class="tags-wrapper">
+                        <span class="tag">Грамотная речь и письмо</span>
+                        <span class="tag">Начитанность</span>
+                        <span class="tag">Упорство</span>
+                        <span class="tag">Быстрая обучаемость</span>
+                        <span class="tag">Работа в команде</span>
+                        <span class="tag">Аналитическое мышление</span>
+                        <span class="tag">Работа с чужим кодом</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Анвар Латыпов. Все права защищены. Размещено на GitHub Pages.
+    </footer>
+
+    <!-- Tab Switching Logic -->
+    <script>
+        function switchTab(event, tabId) {
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Remove active class from all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Set current button and content as active
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
