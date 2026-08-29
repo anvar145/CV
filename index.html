@@ -62,11 +62,6 @@
             position: relative;
         }
 
-        .profile-title-wrapper {
-            display: inline-block;
-            position: relative;
-        }
-
         h1 {
             font-size: 3.2rem;
             font-weight: 800;
@@ -88,7 +83,35 @@
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.3);
             border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Contacts Header Bar */
+        .contacts-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
             margin-bottom: 24px;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            font-size: 1.05rem;
+        }
+
+        .contact-item:hover {
+            color: #ffffff;
         }
 
         .about-card {
@@ -96,7 +119,6 @@
             border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 24px 30px;
-            margin-top: 10px;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
             text-align: left;
             position: relative;
@@ -516,6 +538,11 @@
             .subtitle {
                 font-size: 0.95rem;
             }
+            .contacts-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
             .tabs-nav {
                 flex-direction: column;
             }
@@ -540,6 +567,22 @@
         <header>
             <h1>Анвар Латыпов</h1>
             <div class="subtitle">Резюме • Python-разработчик / ML-инженер</div>
+
+            <!-- Contact Links -->
+            <div class="contacts-bar">
+                <a href="mailto:anv.lat145@gmail.com" class="contact-item">
+                    <i class="fa-solid fa-envelope"></i> anv.lat145@gmail.com
+                </a>
+                <a href="tel:+992550550596" class="contact-item">
+                    <i class="fa-solid fa-phone"></i> +992 550 550 596
+                </a>
+                <a href="https://t.me/insane24" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <i class="fa-brands fa-telegram"></i> @insane24
+                </a>
+                <a href="https://github.com/anvar145" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+            </div>
             
             <div class="about-card">
                 <h3><i class="fa-solid fa-user"></i> О себе</h3>
@@ -569,7 +612,6 @@
         <!-- TAB 1: Python Skills -->
         <div id="skills" class="tab-content active">
             <div class="skills-grid">
-                <!-- Skill items generated dynamically via JS or rendered statically -->
                 <div class="skill-item">
                     <span class="skill-name">OpenCV</span>
                     <div class="skill-level-container">
@@ -936,15 +978,12 @@
     <!-- Tab Switching Logic -->
     <script>
         function switchTab(event, tabId) {
-            // Remove active class from all buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Remove active class from all tab contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Set current button and content as active
             event.currentTarget.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
